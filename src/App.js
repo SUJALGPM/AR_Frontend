@@ -5,11 +5,13 @@ import CommonPage from "./pages/CommonPage";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import { useSelector } from "react-redux";
-import DetailReport from './pages/Reports/DetailReport.js';
-import DoctorReport from './pages/Reports/DoctorReport.js';
 import Spinner from "./components/Spinner";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
+import DetailReport from './pages/Reports/DetailReport.js';
+import DoctorReport from './pages/Reports/DoctorReport.js';
+import AddDoctor from "./pages/Doctors/AddDoctor.js";
+import AddCategory from './pages/Admin/AddCategory.js';
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -65,6 +67,22 @@ function App() {
               element={
                 <ProtectedRoute>
                   <DoctorReport />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/addDoctor"
+              element={
+                <ProtectedRoute>
+                  <AddDoctor />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/addCategory"
+              element={
+                <ProtectedRoute>
+                  <AddCategory />
                 </ProtectedRoute>
               }
             />

@@ -21,7 +21,7 @@ const Layout = ({ children }) => {
   const sidebarWidth = "270px";
 
   // Set the desired width for the content
-  const contentWidth = "calc(100% - 5px)";
+  const contentWidth = "calc(100% - 3px)";
 
   // Dropdown menu for "Detailed Report"
   const detailedReportMenu = (
