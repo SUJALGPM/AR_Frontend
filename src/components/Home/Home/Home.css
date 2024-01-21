@@ -1,0 +1,4 @@
+.content-container{
+    max-height: 100vh; /* Set the maximum height for your container */
+    overflow-y: auto;
+}
