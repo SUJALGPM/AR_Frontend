@@ -1,15 +1,14 @@
 import React, { useEffect } from 'react';
-import Layout from '../../components/Layout';
+import Layout from "../../components/Layout.js";
 
-const AddMR = () => {
+const CategoryList = () => {
     return (
         <Layout>
             <div className='backimg_1' style={{ minHeight: "100%" }}>
-                <h2>Add MRs</h2>
+                CategoryList
             </div>
-
         </Layout>
     )
 }
 
-export default AddMR;
+export default CategoryList;

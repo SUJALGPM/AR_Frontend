@@ -10,6 +10,7 @@ const Layout = ({ children }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
+    localStorage.clear();
     message.success("Logout Successfully");
     navigate("/");
   };
@@ -31,6 +32,69 @@ const Layout = ({ children }) => {
       </Menu.Item>
       <Menu.Item key="/doctorReport" style={{ backgroundColor: "yellow", color: "#fff" }}>
         <Link to="/doctorReport" style={{ color: "#000", textDecoration: "none" }}>Doctor Report</Link>
+      </Menu.Item>
+    </Menu>
+  );
+
+  // Dropdown menu for "Category Manage"
+  const categoryMenu = (
+    <Menu>
+      <Menu.Item key="/addCategory" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
+        <Link to="/addCategory" style={{ color: "#000", textDecoration: 'none' }}>Add Category</Link>
+      </Menu.Item>
+      <Menu.Item key="/categoryList" style={{ backgroundColor: "yellow", color: "#fff" }}>
+        <Link to="/categoryList" style={{ color: "#000", textDecoration: "none" }}>List Category</Link>
+      </Menu.Item>
+    </Menu>
+  );
+
+  // Dropdown menu for "Filter Manage"
+  const filterMenu = (
+    <Menu>
+      <Menu.Item key="/addFilter" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
+        <Link to="/addFilter" style={{ color: "#000", textDecoration: 'none' }}>Add Filter</Link>
+      </Menu.Item>
+      <Menu.Item key="/filterList" style={{ backgroundColor: "yellow", color: "#fff" }}>
+        <Link to="/filterList" style={{ color: "#000", textDecoration: "none" }}>List Filter</Link>
+      </Menu.Item>
+    </Menu>
+  );
+
+  // Dropdown menu for "Doctor Manage"
+  const doctorMenu = (
+    <Menu>
+      <Menu.Item key="/addDoctor" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
+        <Link to="/addDoctor" style={{ color: "#000", textDecoration: 'none' }}>Add Doctor</Link>
+      </Menu.Item>
+      <Menu.Item key="/doctorList" style={{ backgroundColor: "yellow", color: "#fff" }}>
+        <Link to="/doctorList" style={{ color: "#000", textDecoration: "none" }}>List Doctor</Link>
+      </Menu.Item>
+    </Menu>
+  );
+
+  // Dropdown menu for "MRs Manage"
+  const mrMenu = (
+    <Menu>
+      <Menu.Item key="/addMRs" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
+        <Link to="/addMRs" style={{ color: "#000", textDecoration: 'none' }}>Add MRs</Link>
+      </Menu.Item>
+      <Menu.Item key="/listMRs" style={{ backgroundColor: "yellow", color: "#fff" }}>
+        <Link to="/listMRs" style={{ color: "#000", textDecoration: "none" }}>List MRs</Link>
+      </Menu.Item>
+    </Menu>
+  );
+
+  // Dropdown menu for "Admins Manage"
+  const adminManageMenu = (
+    <Menu>
+      <Menu.Item key="/superAdmin" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
+        <Link to="/superAdmin" style={{ color: "#000", textDecoration: 'none' }}>Super Admin</Link>
+      </Menu.Item>
+      <Menu.Item key="/contentAdmin" style={{ backgroundColor: "yellow", color: "#fff" }}>
+        <Link to="/contentAdmin" style={{ color: "#000", textDecoration: "none" }}>Content Admin</Link>
+      </Menu.Item>
+      <Menu.Item key="/reportAdmin" style={{ backgroundColor: "violet", color: "#fff" }}>
+        <Link to="/reportAdmin" style={{ color: "#000", textDecoration: "none" }}>Report Admin</Link>
       </Menu.Item>
     </Menu>
   );
@@ -60,6 +124,67 @@ const Layout = ({ children }) => {
                       </Dropdown>
                     );
                   }
+
+                  // Check if the current menu item is "Manage Category"
+                  if (menu.name === "Manage Category") {
+                    return (
+                      <Dropdown key={menu.path} overlay={categoryMenu} trigger={['click']}>
+                        <div className={`menu-item ${isActive && "active"}`}>
+                          <i className={menu.icon}></i>
+                          {menu.name}
+                        </div>
+                      </Dropdown>
+                    );
+                  }
+
+                  // Check if the current menu item is "Manage Filters"
+                  if (menu.name === "Manage Filter") {
+                    return (
+                      <Dropdown key={menu.path} overlay={filterMenu} trigger={['click']}>
+                        <div className={`menu-item ${isActive && "active"}`}>
+                          <i className={menu.icon}></i>
+                          {menu.name}
+                        </div>
+                      </Dropdown>
+                    );
+                  }
+
+                  // Check if the current menu item is "Manage Doctor"
+                  if (menu.name === "Manage Doctors") {
+                    return (
+                      <Dropdown key={menu.path} overlay={doctorMenu} trigger={['click']}>
+                        <div className={`menu-item ${isActive && "active"}`}>
+                          <i className={menu.icon}></i>
+                          {menu.name}
+                        </div>
+                      </Dropdown>
+                    );
+                  }
+
+                  // Check if the current menu item is "Manage MRs"
+                  if (menu.name === "Manage MRs") {
+                    return (
+                      <Dropdown key={menu.path} overlay={mrMenu} trigger={['click']}>
+                        <div className={`menu-item ${isActive && "active"}`}>
+                          <i className={menu.icon}></i>
+                          {menu.name}
+                        </div>
+                      </Dropdown>
+                    );
+                  }
+
+                  // Check if the current menu item is "Manage Admin"
+                  if (menu.name === "Manage Admins") {
+                    return (
+                      <Dropdown key={menu.path} overlay={adminManageMenu} trigger={['click']}>
+                        <div className={`menu-item ${isActive && "active"}`}>
+                          <i className={menu.icon}></i>
+                          {menu.name}
+                        </div>
+                      </Dropdown>
+                    );
+                  }
+
 
                   return (
                     <div key={menu.path} className={`menu-item ${isActive && "active"}`}>

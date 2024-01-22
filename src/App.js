@@ -11,7 +11,16 @@ import PublicRoute from "./components/PublicRoute";
 import DetailReport from './pages/Reports/DetailReport.js';
 import DoctorReport from './pages/Reports/DoctorReport.js';
 import AddDoctor from "./pages/Doctors/AddDoctor.js";
+import DoctorList from "./pages/Doctors/DoctorList.js";
 import AddCategory from './pages/Admin/AddCategory.js';
+import CategoryList from "./pages/Admin/CategoryList.js";
+import AddFilter from "./pages/Admin/AddFilter.js";
+import ListFilter from "./pages/Admin/ListFilter.js";
+import AddMR from "./pages/MR/AddMR.js";
+import ListMRs from "./pages/MR/ListMRs.js";
+import SuperAdmin from "./pages/Admin/SuperAdmin.js";
+import ContentAdmin from "./pages/Admin/ContentAdmin.js";
+import ReportAdmin from "./pages/Admin/ReportAdmin.js";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -79,10 +88,82 @@ function App() {
               }
             />
             <Route
+              path="/doctorList"
+              element={
+                <ProtectedRoute>
+                  <DoctorList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
               path="/addCategory"
               element={
                 <ProtectedRoute>
                   <AddCategory />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/categoryList"
+              element={
+                <ProtectedRoute>
+                  <CategoryList />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/addFilter"
+              element={
+                <ProtectedRoute>
+                  <AddFilter />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/filterList"
+              element={
+                <ProtectedRoute>
+                  <ListFilter />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/addMRs"
+              element={
+                <ProtectedRoute>
+                  <AddMR />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/listMRs"
+              element={
+                <ProtectedRoute>
+                  <ListMRs />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/superAdmin"
+              element={
+                <ProtectedRoute>
+                  <SuperAdmin />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/contentAdmin"
+              element={
+                <ProtectedRoute>
+                  <ContentAdmin />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/reportAdmin"
+              element={
+                <ProtectedRoute>
+                  <ReportAdmin />
                 </ProtectedRoute>
               }
             />

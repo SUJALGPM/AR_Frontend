@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Form, Input, message, Divider, Button } from "antd";
+import { Input, message, Divider, Button } from "antd";
+import { FormGroup, Label, Form } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
 import { NavLink, useNavigate } from "react-router-dom";
-import axios from "axios";
 import Navbar from "../components/Shared/Navbar/Navbar";
 import Footer from "../components/Shared/Footer/FooterYou";
 
@@ -11,28 +11,38 @@ const Login = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [adminId, setAdminId] = useState([]);
+  const [password, setPassword] = useState([]);
 
-  const onfinishHandler = async (values) => {
+  const onfinishHandler = async (e) => {
+    e.preventDefault();
+
     try {
-      console.log(values);
-      const adminId = values.id;
-      const password = values.password;
-      
+      const formData = {
+        adminId,
+        password,
+      }
+
+      console.log(formData);
       dispatch(showLoading());
+
       const res = await fetch(`https://custom-iztj.onrender.com/api/admin/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(values) // Remove the extra semicolon here
+        body: JSON.stringify(formData),
       });
-
-      window.location.reload();
+  
       dispatch(hideLoading());
-      const data = await res.json(); // Parse the response data
-
-      if (data.success) {
-        localStorage.setItem("token", data.token);
+      const data = await res.json();
+      if (res.ok === true) {
+        console.log("After response ok data :", data);
+        const token = data.token;
+        console.log("token :", token);
+        localStorage.setItem("token", token);
+        localStorage.setItem("adminID", data.data.adminID);
+        localStorage.setItem("adminName", data.data.adminNAME);
         message.success("Login Successfully");
         navigate("/commonPage");
       } else {
@@ -49,22 +59,37 @@ const Login = () => {
     <>
       <Navbar />
       <div className="background_image" style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
-        <Form onFinish={onfinishHandler} className="register-form" >
+        <Form className="register-form">
           <h3 className="text-center effect">Login Form </h3>
           <hr />
-          <Form.Item label="email" name="adminId" rules={[{ required: true, type: "text", message: "Please enter email" }]}>
-            <Input type="text" placeholder="Enter Admin ID" required />
-          </Form.Item>
-          <Form.Item label="password" name="password" rules={[{ required: true, type: "password", message: "Please enter password" }]}>
-            <Input.Password type="password" placeholder="Enter password" required />
-          </Form.Item>
-          <Form.Item style={{ marginLeft: 110 }}>
-            <Button type='primary' htmlType='submit' shape='round' size='large' style={{ width: "190px" }}>Login</Button>
-          </Form.Item>
-          <Divider style={{ borderColor: 'black' }}>Don't have an account</Divider>
-          <Form.Item style={{ marginLeft: 145 }}>
+          <FormGroup>
+            <Label for="adminId">Email ID :-</Label>
+            <Input
+              type="text"
+              name="adminId"
+              id="adminId"
+              value={adminId}
+              placeholder="Enter Admin ID"
+              onChange={(e) => setAdminId(e.target.value)}
+              required />
+          </FormGroup>
+          <FormGroup>
+            <Label for="password">Password :-</Label>
+            <Input type="password"
+              name="password"
+              id="password"
+              value={password}
+              placeholder="Enter password"
+              onChange={(e) => setPassword(e.target.value)}
+              required />
+          </FormGroup>
+
+          <Button type='primary' htmlType='submit' color="primary" size='lg' onClick={onfinishHandler} style={{ width: "200px", marginLeft: "100px" }}>Login</Button>
+          <div style={{ marginTop: '20px', textAlign: 'center' }}>
+            <hr style={{ borderColor: 'black' }} />
+            <p>Don't have an account?</p>
             <NavLink to="/register" className="text-dark magic" style={{ textDecoration: "none", fontSize: "20px", fontWeight: "bold" }}>Register Now</NavLink>
-          </Form.Item>
+          </div>
         </Form>
       </div>
       <Footer />

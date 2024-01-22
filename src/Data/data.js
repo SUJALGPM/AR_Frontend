@@ -10,28 +10,28 @@ export const adminMenu = [
     icon: "fa-solid fa-list",
   },
   {
-    name: "Add Category",
-    path: "/addCategory",
+    name: "Manage Category",
+    path: "#",
     icon: "fa-solid fa-user-doctor",
   },
   {
-    name: "Add Filter",
-    path: "/chatbot",
+    name: "Manage Filter",
+    path: "#",
     icon: "fa-solid fa-user",
   },
   {
     name: "Manage Doctors",
-    path: "/addDoctor",
+    path: "#",
     icon: "fa-solid fa-user",
   },
   {
     name: "Manage MRs",
-    path: "/create-blog",
+    path: "#",
     icon: "fa-solid fa-user",
   },
   {
     name: "Manage Admins",
-    path: "/my-blogs",
+    path: "#",
     icon: "fa-solid fa-user",
   },
 ];
