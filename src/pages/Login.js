@@ -33,7 +33,7 @@ const Login = () => {
         },
         body: JSON.stringify(formData),
       });
-  
+
       dispatch(hideLoading());
       const data = await res.json();
       if (res.ok === true) {

@@ -28,14 +28,16 @@ const AddCategory = () => {
                 body: JSON.stringify(formData),
             });
 
-            if (!response) {
+            const msg = await response.json();
+
+            if (!msg) {
                 console.log("Failed to create new Category...!!");
-                window.alert("Failed to create new Category...!!");
+                window.alert(`Message : ${msg.message}`);
             }
 
-            if (response) {
+            if (msg) {
                 console.log("New Category create Successfully...");
-                window.alert("New Category create Successfully...");
+                window.alert(`Message : ${msg.message}`);
             }
         } catch (err) {
             console.log(err)
@@ -48,20 +50,22 @@ const AddCategory = () => {
             <div className='backimg_1' style={{ minHeight: "100%" }}>
                 <Row className="justify-content-center" >
                     <Col md={6} >
-                        <div style={{ background: "lightblue", border: "1px solid black", borderRadius: "8px", padding: "20px", marginTop: "10px" }}>
+                        <div style={{ background: "lightblue", border: "1px solid black", borderRadius: "8px", padding: "20px", marginTop: "130px" }}>
                             <h3 className="text-center mb-4">Add New Category</h3>
-                            <Form className="register-form">
+                            <Form className="register-form" style={{ height: "195px" }}>
                                 <FormGroup>
+                                    <Label for="adminId" style={{ fontSize: "16px", fontStyle: "italic", textDecoration: "underline" }}>Enter Category Name :-</Label>
                                     <Input
                                         type="text"
                                         id="Category Names"
                                         placeholder="Category Name"
                                         value={categoryName}
                                         onChange={(e) => setCategoryName(e.target.value)}
+                                        style={{ marginTop: "10px" }}
                                     />
                                 </FormGroup>
                                 {/* Log in Button */}
-                                <Button onClick={handleDoctorCreate} color="primary" className="w-100">
+                                <Button onClick={handleDoctorCreate} color="info" className="w-100" style={{ marginTop: "15px" }}>
                                     Create New Category
                                 </Button>
                             </Form>

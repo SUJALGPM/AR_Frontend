@@ -9,11 +9,19 @@ const Layout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  //Logout Fucntionalities....
   const handleLogout = () => {
     localStorage.clear();
     message.success("Logout Successfully");
     navigate("/");
   };
+
+  //Username....
+  const nameFetch = () => {
+    return localStorage.getItem('adminName');
+  }
+
+  const nameD = nameFetch();
 
   //Sidebar menu data with route....
   const SidebarMenu = adminMenu;
@@ -203,7 +211,12 @@ const Layout = ({ children }) => {
               <div className="header">
                 <div className="header-content" style={{ cursor: "pointer" }}>
                   {/* Add your header content here */}
-                  Pharmaceutical project related to admin....
+                  <h4>
+                    Pharmaceutical project related to admin....
+                  </h4>
+                  <h3 style={{ marginLeft: "400px", marginRight: "10px", fontWeight: "bold" }}>
+                    {nameD}
+                  </h3>
                 </div>
               </div>
               <Content
