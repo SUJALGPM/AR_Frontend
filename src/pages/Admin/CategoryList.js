@@ -3,6 +3,7 @@ import Layout from "../../components/Layout.js";
 import { Table } from 'reactstrap';
 
 const CategoryList = () => {
+
     //Store the fetch data form APIs....
     const [data, setData] = useState([]);
 
@@ -27,13 +28,13 @@ const CategoryList = () => {
                             <th style={{ textAlign: "center" }}>FilterName</th>
                             <th style={{ textAlign: "center" }}>FilterImage</th>
                         </tr>
-                    </thead>    
+                    </thead>
                     <tbody>
                         {data.map((item, index) => (
                             <tr key={index}>
                                 <td style={{ padding: "13px", textAlign: "center" }}>{item.categoryName}</td>
                                 <td style={{ padding: "13px", textAlign: "center" }}>{item.catFilterName}</td>
-                                <td style={{ padding: "13px", textAlign: "center" }}>{item.catFilterImage}</td>
+                                <td style={{ padding: "13px", textAlign: "center", maxWidth: "200px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{item.catFilterImage}</td>
                             </tr>
                         ))}
                     </tbody>

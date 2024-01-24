@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import { Table } from 'reactstrap';
 
@@ -32,7 +32,7 @@ const ListFilter = () => {
                         {data.map((item, index) => (
                             <tr key={index}>
                                 <td style={{ padding: "13px", textAlign: "center" }}>{item.filterName}</td>
-                                <td style={{ padding: "13px", textAlign: "center" }}>{item.filterUrl}</td>
+                                <td style={{ padding: "13px", textAlign: "center", maxWidth: "200px", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{item.filterUrl}</td>
                             </tr>
                         ))}
                     </tbody>

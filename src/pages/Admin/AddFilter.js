@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
 import { Button, Form, FormGroup, Label, Input, Container, Col, Row } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
+import firebase from "firebase/compat/app";
+import "firebase/compat/storage";
 
 const AddFilter = () => {
 
@@ -35,23 +37,44 @@ const AddFilter = () => {
         setCategoryName(e.target.value);
     }
 
+    //Firebase setup to pass download link of image....
+    //Upload the image to firebase...
+    const handleUpload = async (e) => {
+        const selectedFile = e.target.files[0];
+        if (selectedFile) {
+            const storageRef = firebase.storage().ref()
+            const fileRef = storageRef.child(selectedFile.name);
+            fileRef.put(selectedFile)
+                .then((snapshot) => {
+                    snapshot.ref.getDownloadURL()
+                        .then((downloadURL) => {
+                            console.log("LINK HAI PICK :", downloadURL);
+                            setFilterImage(downloadURL)
+                        })
+                })
+        } else {
+            console.log("NO FILE SELECTED..!!!");
+        }
+    }
+
     //Handle the POST API for add filter in particular category Only....
     const handleAddFilter = async (e) => {
         e.preventDefault();
 
-        //Make data format to pass payload from API...
-        const formData = new FormData();
-        formData.append('categoryId', categoryName);
-        formData.append('filterName', filterName);
-        formData.append('filterUrl', filterImage); // Assuming filterImage is a File object.
+        //Make a format of data...
+        const formData = {
+            categoryId: categoryName,
+            filterName: filterName,
+            filterUrl: filterImage
+        }
 
         try {
             const res = await fetch('https://custom-iztj.onrender.com/api/admin/addFilter', {
                 method: 'POST',
-                // headers: {
-                //     'Content-Type': 'application/json',
-                // },
-                body: formData
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
             });
 
             if (res) {
@@ -90,8 +113,7 @@ const AddFilter = () => {
                                         id="image"
                                         accept="image/*"
                                         name='select'
-                                        // value={filterImage}
-                                        onChange={(e) => setFilterImage(e.target.files[0])}
+                                        onChange={handleUpload}
                                     />
                                 </FormGroup>
                                 {/* Category Dropdown Field */}
@@ -114,7 +136,7 @@ const AddFilter = () => {
                                 </FormGroup>
                                 {/* Log in Button */}
                                 <Button onClick={handleAddFilter} color="primary" className="w-100">
-                                    Create Doctor
+                                    Add New Filter
                                 </Button>
                             </Form>
                         </div>

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
+import {useNavigate} from "react-router-dom";
 import { Button, Form, FormGroup, Label, Input, Container, Col, Row } from 'reactstrap';
 
 const AddDoctor = () => {
 
+    //Render after work....
+    const navigate = useNavigate();
+
+    //Store the data in state....
     const [loopData, setLoopData] = useState([]);
     const [selectedMRID, setSelectedMRID] = useState('');
     const [doctorsName, setDoctorName] = useState('');
@@ -63,6 +68,7 @@ const AddDoctor = () => {
 
             if (response) {
                 window.alert("Doctor Created Successfully.....");
+                navigate('/doctorList');
             }
         } catch (error) {
             console.error('Error:', error);

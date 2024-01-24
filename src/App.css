@@ -131,7 +131,7 @@
 .header {
     height: 10vh;
     margin-bottom: 20px;
-    background-color: orange;
+    background-color: rgb(253, 122, 0);
     box-shadow: 0 0 2px gray;
 }
 

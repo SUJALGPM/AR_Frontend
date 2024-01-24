@@ -7,6 +7,19 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import firebase from "firebase/compat/app";
+
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyA_hzKtZe7Ok30r2LK9hk275ecA2pDjcgQ",
+  authDomain: "arimages-6188b.firebaseapp.com",
+  projectId: "arimages-6188b",
+  storageBucket: "arimages-6188b.appspot.com",
+  messagingSenderId: "312374844549",
+  appId: "1:312374844549:web:39fbabcdfc9b1bcc905dec"
+};
+
+firebase.initializeApp(firebaseConfig);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
