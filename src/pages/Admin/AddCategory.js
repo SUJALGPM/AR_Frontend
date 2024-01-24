@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import Layout from "../../components/Layout.js";
 import { Button, Form, FormGroup, Label, Input, Container, Col, Row } from 'reactstrap';
+import { useNavigate } from 'react-router-dom';
 
 const AddCategory = () => {
+
+    //State to render after work...
+    const navigate = useNavigate();
 
     //store the form data in useState...
     const [categoryName, setCategoryName] = useState([]);
@@ -30,15 +34,13 @@ const AddCategory = () => {
 
             const msg = await response.json();
 
-            if (!msg) {
-                console.log("Failed to create new Category...!!");
-                window.alert(`Message : ${msg.message}`);
+            if (response.ok === true) {
+                window.alert(`Message: ${msg.message}`)
+                navigate('/categoryList');
+            } else {
+                window.alert(`Message:${msg.message}`);
             }
 
-            if (msg) {
-                console.log("New Category create Successfully...");
-                window.alert(`Message : ${msg.message}`);
-            }
         } catch (err) {
             console.log(err)
         }
@@ -50,7 +52,7 @@ const AddCategory = () => {
             <div className='backimg_1' style={{ minHeight: "100%" }}>
                 <Row className="justify-content-center" >
                     <Col md={6} >
-                        <div style={{ background: "lightblue", border: "1px solid black", borderRadius: "8px", padding: "20px", marginTop: "130px" }}>
+                        <div style={{ background: "rgb(253,165,0)", border: "1px solid black", borderRadius: "8px", padding: "20px", marginTop: "130px" }}>
                             <h3 className="text-center mb-4">Add New Category</h3>
                             <Form className="register-form" style={{ height: "195px" }}>
                                 <FormGroup>

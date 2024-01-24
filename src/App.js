@@ -21,6 +21,8 @@ import ListMRs from "./pages/MR/ListMRs.js";
 import SuperAdmin from "./pages/Admin/SuperAdmin.js";
 import ContentAdmin from "./pages/Admin/ContentAdmin.js";
 import ReportAdmin from "./pages/Admin/ReportAdmin.js";
+import Dashboard from './pages/Dashboard.js';
+import Setting from "./pages/Setting.js";
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -32,7 +34,7 @@ function App() {
         ) : (
           <Routes>
             <Route
-              path="/login"
+              path="/"
               element={
                 <PublicRoute>
                   <Login />
@@ -47,14 +49,14 @@ function App() {
                 </PublicRoute>
               }
             />
-            <Route
+            {/* <Route
               path="/"
               element={
                 <PublicRoute>
                   <Home />
                 </PublicRoute>
               }
-            />
+            /> */}
             <Route
               path="/commonPage"
               element={
@@ -164,6 +166,22 @@ function App() {
               element={
                 <ProtectedRoute>
                   <ReportAdmin />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/dash"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/setting"
+              element={
+                <ProtectedRoute>
+                  <Setting />
                 </ProtectedRoute>
               }
             />

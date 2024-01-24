@@ -9,6 +9,6 @@ export default function ProtectedRoute({ children }) {
     return children; // Render the protected content
   } else {
     // If the token is not present, navigate to the login page
-    return <Navigate to="/login" />;
+    return <Navigate to="/" />;
   }
 }

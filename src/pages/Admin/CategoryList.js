@@ -27,7 +27,7 @@ const CategoryList = () => {
                             <th style={{ textAlign: "center" }}>FilterName</th>
                             <th style={{ textAlign: "center" }}>FilterImage</th>
                         </tr>
-                    </thead>
+                    </thead>    
                     <tbody>
                         {data.map((item, index) => (
                             <tr key={index}>

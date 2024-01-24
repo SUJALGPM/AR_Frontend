@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { adminMenu } from "./../Data/data";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Badge, message, Dropdown, Menu } from "antd";
+import { message, Dropdown, Menu } from "antd";
 import "./Home/Home/Home.css";
 import { Content } from "antd/es/layout/layout";
 
 const Layout = ({ children }) => {
   const location = useLocation();
   const navigate = useNavigate();
+  const [selectedKey, setSelectedKey] = useState(location.pathname);
 
   //Logout Fucntionalities....
   const handleLogout = () => {
     localStorage.clear();
     message.success("Logout Successfully");
     navigate("/");
+  };
+
+  //Selected menu item effect...
+  const handleMenuClick = (e) => {
+    setSelectedKey(e.key);
   };
 
   //Username....
@@ -34,75 +40,75 @@ const Layout = ({ children }) => {
 
   // Dropdown menu for "Detailed Report"
   const detailedReportMenu = (
-    <Menu>
-      <Menu.Item key="/detailReport" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
-        <Link to="/detailReport" style={{ color: "#000", textDecoration: 'none' }}>Detail Report</Link>
+    <Menu selectedKeys={[selectedKey]} mode="horizontal" onClick={handleMenuClick}>
+      <Menu.Item key="/detailReport" style={{ height: "50px", border: selectedKey === '/detailReport' ? '2px solid black' : '1px solid black' }}>
+        <Link to="/detailReport" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Detail Report</Link>
       </Menu.Item>
-      <Menu.Item key="/doctorReport" style={{ backgroundColor: "yellow", color: "#fff" }}>
-        <Link to="/doctorReport" style={{ color: "#000", textDecoration: "none" }}>Doctor Report</Link>
+      <Menu.Item key="/doctorReport" style={{ height: "50px", border: selectedKey === '/doctorReport' ? '2px solid black' : '1px solid black', marginTop: "3px" }}>
+        <Link to="/doctorReport" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Doctor Report</Link>
       </Menu.Item>
     </Menu>
   );
 
   // Dropdown menu for "Category Manage"
   const categoryMenu = (
-    <Menu>
-      <Menu.Item key="/addCategory" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
-        <Link to="/addCategory" style={{ color: "#000", textDecoration: 'none' }}>Add Category</Link>
+    <Menu selectedKeys={[selectedKey]} mode="horizontal" onClick={handleMenuClick}>
+      <Menu.Item key="/addCategory" style={{ height: "50px", border: selectedKey === '/addCategory' ? '2px solid black' : '1px solid black' }}>
+        <Link to="/addCategory" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Add Category</Link>
       </Menu.Item>
-      <Menu.Item key="/categoryList" style={{ backgroundColor: "yellow", color: "#fff" }}>
-        <Link to="/categoryList" style={{ color: "#000", textDecoration: "none" }}>List Category</Link>
+      <Menu.Item key="/categoryList" style={{ height: "50px", border: selectedKey === '/categoryList' ? '2px solid black' : '1px solid black', marginTop: "3px" }}>
+        <Link to="/categoryList" style={{ color: "black", textDecoration: "none", fontWeight: "bold", fontSize: '17px' }}>List Category</Link>
       </Menu.Item>
     </Menu>
   );
 
   // Dropdown menu for "Filter Manage"
   const filterMenu = (
-    <Menu>
-      <Menu.Item key="/addFilter" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
-        <Link to="/addFilter" style={{ color: "#000", textDecoration: 'none' }}>Add Filter</Link>
+    <Menu selectedKeys={[selectedKey]} mode="horizontal" onClick={handleMenuClick}>
+      <Menu.Item key="/addFilter" style={{ height: "50px", border: selectedKey === '/addFilter' ? '2px solid black' : '1px solid black' }}>
+        <Link to="/addFilter" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Add Filter</Link>
       </Menu.Item>
-      <Menu.Item key="/filterList" style={{ backgroundColor: "yellow", color: "#fff" }}>
-        <Link to="/filterList" style={{ color: "#000", textDecoration: "none" }}>List Filter</Link>
+      <Menu.Item key="/filterList" style={{ height: "50px", border: selectedKey === '/filterList' ? '2px solid black' : '1px solid black', marginTop: "3px" }}>
+        <Link to="/filterList" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>List Filter</Link>
       </Menu.Item>
     </Menu>
   );
 
   // Dropdown menu for "Doctor Manage"
   const doctorMenu = (
-    <Menu>
-      <Menu.Item key="/addDoctor" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
-        <Link to="/addDoctor" style={{ color: "#000", textDecoration: 'none' }}>Add Doctor</Link>
+    <Menu selectedKeys={[selectedKey]} mode="horizontal" onClick={handleMenuClick}>
+      <Menu.Item key="/addDoctor" style={{ height: "50px", border: selectedKey === '/addDoctor' ? '2px solid black' : '1px solid black' }}>
+        <Link to="/addDoctor" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Add Doctor</Link>
       </Menu.Item>
-      <Menu.Item key="/doctorList" style={{ backgroundColor: "yellow", color: "#fff" }}>
-        <Link to="/doctorList" style={{ color: "#000", textDecoration: "none" }}>List Doctor</Link>
+      <Menu.Item key="/doctorList" style={{ height: "50px", border: selectedKey === '/doctorList' ? '2px solid black' : '1px solid black', marginTop: "3px" }}>
+        <Link to="/doctorList" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>List Doctor</Link>
       </Menu.Item>
     </Menu>
   );
 
   // Dropdown menu for "MRs Manage"
   const mrMenu = (
-    <Menu>
-      <Menu.Item key="/addMRs" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
-        <Link to="/addMRs" style={{ color: "#000", textDecoration: 'none' }}>Add MRs</Link>
+    <Menu selectedKeys={[selectedKey]} mode="horizontal" onClick={handleMenuClick}>
+      <Menu.Item key="/addMRs" style={{ height: "50px", border: selectedKey === '/addMRs' ? '2px solid black' : '1px solid black' }}>
+        <Link to="/addMRs" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Add MRs</Link>
       </Menu.Item>
-      <Menu.Item key="/listMRs" style={{ backgroundColor: "yellow", color: "#fff" }}>
-        <Link to="/listMRs" style={{ color: "#000", textDecoration: "none" }}>List MRs</Link>
+      <Menu.Item key="/listMRs" style={{ height: "50px", border: selectedKey === '/listMRs' ? '2px solid black' : '1px solid black', marginTop: "3px" }}>
+        <Link to="/listMRs" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>List MRs</Link>
       </Menu.Item>
     </Menu>
   );
 
   // Dropdown menu for "Admins Manage"
   const adminManageMenu = (
-    <Menu>
-      <Menu.Item key="/superAdmin" style={{ backgroundColor: "#87CEFA", color: "#fff" }}>
-        <Link to="/superAdmin" style={{ color: "#000", textDecoration: 'none' }}>Super Admin</Link>
+    <Menu selectedKeys={[selectedKey]} mode="horizontal" onClick={handleMenuClick}>
+      <Menu.Item key="/superAdmin" style={{ height: "50px", border: selectedKey === '/superAdmin' ? '2px solid black' : '1px solid black' }}>
+        <Link to="/superAdmin" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Super Admin</Link>
       </Menu.Item>
-      <Menu.Item key="/contentAdmin" style={{ backgroundColor: "yellow", color: "#fff" }}>
-        <Link to="/contentAdmin" style={{ color: "#000", textDecoration: "none" }}>Content Admin</Link>
+      <Menu.Item key="/contentAdmin" style={{ height: "50px", border: selectedKey === '/contentAdmin' ? '2px solid black' : '1px solid black' }}>
+        <Link to="/contentAdmin" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Content Admin</Link>
       </Menu.Item>
-      <Menu.Item key="/reportAdmin" style={{ backgroundColor: "violet", color: "#fff" }}>
-        <Link to="/reportAdmin" style={{ color: "#000", textDecoration: "none" }}>Report Admin</Link>
+      <Menu.Item key="/reportAdmin" style={{ height: "50px", border: selectedKey === '/reportAdmin' ? '2px solid black' : '1px solid black' }}>
+        <Link to="/reportAdmin" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Report Admin</Link>
       </Menu.Item>
     </Menu>
   );
@@ -114,7 +120,7 @@ const Layout = ({ children }) => {
           <div className="layout">
             <div className="sidebar" style={{ width: sidebarWidth }}>
               <div className="logo">
-                <h6 className="text-light">Admin Panel</h6>
+                <h6 style={{color:"black",fontWeight:"bold"}}> ADMIN PANEL</h6>
                 <hr />
               </div>
               <div className="menu">
@@ -127,7 +133,7 @@ const Layout = ({ children }) => {
                       <Dropdown key={menu.path} overlay={detailedReportMenu} trigger={['click']}>
                         <div className={`menu-item ${isActive && "active"}`}>
                           <i className={menu.icon}></i>
-                          {menu.name}
+                          <Link to={menu.path}>{menu.name}</Link>
                         </div>
                       </Dropdown>
                     );
@@ -139,7 +145,7 @@ const Layout = ({ children }) => {
                       <Dropdown key={menu.path} overlay={categoryMenu} trigger={['click']}>
                         <div className={`menu-item ${isActive && "active"}`}>
                           <i className={menu.icon}></i>
-                          {menu.name}
+                          <Link to={menu.path}>{menu.name}</Link>
                         </div>
                       </Dropdown>
                     );
@@ -151,7 +157,7 @@ const Layout = ({ children }) => {
                       <Dropdown key={menu.path} overlay={filterMenu} trigger={['click']}>
                         <div className={`menu-item ${isActive && "active"}`}>
                           <i className={menu.icon}></i>
-                          {menu.name}
+                          <Link to={menu.path}>{menu.name}</Link>
                         </div>
                       </Dropdown>
                     );
@@ -163,7 +169,7 @@ const Layout = ({ children }) => {
                       <Dropdown key={menu.path} overlay={doctorMenu} trigger={['click']}>
                         <div className={`menu-item ${isActive && "active"}`}>
                           <i className={menu.icon}></i>
-                          {menu.name}
+                          <Link to={menu.path}>{menu.name}</Link>
                         </div>
                       </Dropdown>
                     );
@@ -175,7 +181,7 @@ const Layout = ({ children }) => {
                       <Dropdown key={menu.path} overlay={mrMenu} trigger={['click']}>
                         <div className={`menu-item ${isActive && "active"}`}>
                           <i className={menu.icon}></i>
-                          {menu.name}
+                          <Link to={menu.path}>{menu.name}</Link>
                         </div>
                       </Dropdown>
                     );
@@ -187,7 +193,7 @@ const Layout = ({ children }) => {
                       <Dropdown key={menu.path} overlay={adminManageMenu} trigger={['click']}>
                         <div className={`menu-item ${isActive && "active"}`}>
                           <i className={menu.icon}></i>
-                          {menu.name}
+                          <Link to={menu.path}>{menu.name}</Link>
                         </div>
                       </Dropdown>
                     );
@@ -211,12 +217,9 @@ const Layout = ({ children }) => {
               <div className="header">
                 <div className="header-content" style={{ cursor: "pointer" }}>
                   {/* Add your header content here */}
-                  <h4>
-                    Pharmaceutical project related to admin....
-                  </h4>
-                  <h3 style={{ marginLeft: "400px", marginRight: "10px", fontWeight: "bold" }}>
+                  {/* <h3 style={{ marginLeft: "400px", marginRight: "10px", fontWeight: "bold" }}>
                     {nameD}
-                  </h3>
+                  </h3> */}
                 </div>
               </div>
               <Content
@@ -224,6 +227,7 @@ const Layout = ({ children }) => {
                   width: contentWidth,
                   height: "600px",
                   overflowX: "auto", // Enable horizontal scrolling
+                  border: "1px solid black"
                 }}
               >
                 {children}

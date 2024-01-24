@@ -1,5 +1,6 @@
 .background_image {
-    background-image: url("./images/doc2.jpg");
+    /* background-image: url("./images/doc2.jpg"); */
+    background-color: rgb(253,122,0);
     background-size: cover;
     background-position: center;
     height: 100vh;
@@ -7,18 +8,28 @@
 }
 
 .backimg_1 {
-    background-image: url("./images/doc1.png");
+    /* background-image: url("./images/doc1.png"); */
+    border-color: black;
+    border: "1px solid black";
     background-size: cover;
     background-position: center;
 }
 
+.function-form{
+    border: "1px solid black"; 
+    border-radius: "8px";
+    padding: "20px";
+    margin-top: "80px";
+    background-color: rgb(253, 122, 0);;
+}
+
 .register-form {
-    width: 450px;
+    width: 430px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 15px;
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255);
 }
 
 .register-form2 {
@@ -106,7 +117,7 @@
     min-height: 100%;
     width: 300px;
     border-radius: 5px;
-    background-color: rgb(1, 24, 51);
+    background-color: rgb(253, 122, 0);
     box-shadow: 0 0 2px gray;
     margin-right: 20px;
     color: white;
@@ -120,7 +131,7 @@
 .header {
     height: 10vh;
     margin-bottom: 20px;
-    background-color: white;
+    background-color: orange;
     box-shadow: 0 0 2px gray;
 }
 

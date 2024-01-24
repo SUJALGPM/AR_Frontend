@@ -75,7 +75,7 @@ const AddDoctor = () => {
             <div className='backimg_1' style={{ minHeight: "100%" }}>
                 <Row className="justify-content-center" >
                     <Col md={6} >
-                        <div style={{ background: "lightblue", border: "1px solid black", borderRadius: "8px", padding: "20px", marginTop: "10px" }}>
+                        <div style={{ background: "orange", border: "1px solid black", borderRadius: "8px", padding: "20px", marginTop: "10px" }}>
                             <h3 className="text-center mb-4">Add New Doctor</h3>
                             <Form className="register-form">
                                 <FormGroup>

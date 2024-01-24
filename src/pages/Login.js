@@ -57,11 +57,10 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
       <div className="background_image" style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
         <Form className="register-form">
-          <h3 className="text-center effect">Login Form </h3>
-          <hr />
+          <h3 className="text-center">Login Form </h3>
+          <hr style={{ borderColor: 'black' }} />
           <FormGroup>
             <Label for="adminId">Email ID :-</Label>
             <Input
@@ -84,15 +83,9 @@ const Login = () => {
               required />
           </FormGroup>
 
-          <Button type='primary' htmlType='submit' color="primary" size='lg' onClick={onfinishHandler} style={{ width: "200px", marginLeft: "100px" }}>Login</Button>
-          <div style={{ marginTop: '20px', textAlign: 'center' }}>
-            <hr style={{ borderColor: 'black' }} />
-            <p>Don't have an account?</p>
-            <NavLink to="/register" className="text-dark magic" style={{ textDecoration: "none", fontSize: "20px", fontWeight: "bold" }}>Register Now</NavLink>
-          </div>
+          <Button type='primary' htmlType='submit' color="primary" size='lg' onClick={onfinishHandler} style={{ width: "200px", marginLeft: "94px" }}>Login</Button>
         </Form>
       </div>
-      <Footer />
     </>
   );
 };
