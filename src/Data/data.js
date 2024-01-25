@@ -2,8 +2,8 @@ export const adminMenu = [
   {
     name: "Dashboard",
     path: "/dash",
-    icon: "fa-solid fa-house",
-  },
+    icon: "fas fa-chart-pie",
+  },  
   {
     name: "Manage Category",
     path: "#",
@@ -25,11 +25,6 @@ export const adminMenu = [
     icon: "fa-solid fa-user-md",
   },
   {
-    name: "Configuration",
-    path: "/setting",
-    icon: "fa-solid fa-cog",
-  },
-  {
     name: "Review Reports",
     path: "#",
     icon: "fa-solid fa-list",
@@ -38,6 +33,11 @@ export const adminMenu = [
     name: "Manage Admins",
     path: "#",
     icon: "fa-solid fa-cogs",
+  },
+  {
+    name: "Configuration",
+    path: "/setting",
+    icon: "fa-solid fa-cog",
   },
 ];
 
