@@ -3,7 +3,7 @@ import Layout from '../../components/Layout';
 import { Button, Form, FormGroup, Input, Col, Row } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 import firebase from "firebase/compat/app";
-import {message} from 'antd';
+import { message } from 'antd';
 import "firebase/compat/storage";
 
 const AddFilter = () => {
