@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { Input, message, Divider, Button } from "antd";
+import React, { useState } from "react";
+import { Input, message, Button } from "antd";
 import { FormGroup, Label, Form } from "reactstrap";
 import { useDispatch } from "react-redux";
 import { showLoading, hideLoading } from "../redux/features/alertSlice";
-import { NavLink, useNavigate } from "react-router-dom";
-import Navbar from "../components/Shared/Navbar/Navbar";
-import Footer from "../components/Shared/Footer/FooterYou";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 

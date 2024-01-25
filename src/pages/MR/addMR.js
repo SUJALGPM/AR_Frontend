@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Layout from '../../components/Layout';
 import { Button, Form, FormGroup, Input, Col, Row } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
+import {message} from 'antd';
 
 const AddMR = () => {
 
@@ -54,11 +55,11 @@ const AddMR = () => {
 
             if (response.ok === true) {
                 console.log("New MR Create Successfully....");
-                window.alert(`Message :${jsonData.message}`);
+                message.success(`Message :${jsonData.message}`);
                 navigate('/listMRs');
             } else {
                 console.log("Failed to create new MR...!!!");
-                window.alert(`Message :${jsonData.message}`);
+                message.error(`Message :${jsonData.message}`);
             }
 
         } catch (err) {

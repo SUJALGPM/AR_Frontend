@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../components/Layout';
-import {useNavigate} from "react-router-dom";
-import { Button, Form, FormGroup, Label, Input, Container, Col, Row } from 'reactstrap';
+import { useNavigate } from "react-router-dom";
+import { Button, Form, FormGroup, Input, Col, Row } from 'reactstrap';
+import {message} from 'antd';
 
 const AddDoctor = () => {
 
@@ -67,7 +68,7 @@ const AddDoctor = () => {
             }
 
             if (response) {
-                window.alert("Doctor Created Successfully.....");
+                message.success("Doctor Created Successfully.....");
                 navigate('/doctorList');
             }
         } catch (error) {

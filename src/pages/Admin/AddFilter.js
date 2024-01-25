@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import Layout from '../../components/Layout';
-import { Button, Form, FormGroup, Label, Input, Container, Col, Row } from 'reactstrap';
+import { Button, Form, FormGroup, Input, Col, Row } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
 import firebase from "firebase/compat/app";
+import {message} from 'antd';
 import "firebase/compat/storage";
 
 const AddFilter = () => {
@@ -79,11 +80,11 @@ const AddFilter = () => {
 
             if (res) {
                 console.log('Fitler add successfully....');
-                window.alert("Fitler add successfully....");
+                message.success("Fitler add successfully....");
                 navigate('/filterList');
             } else {
                 console.log("Failed to add filter...");
-                window.alert("Failed to add filter...");
+                message.error("Failed to add filter...");
             }
         } catch (err) {
             console.log(err);

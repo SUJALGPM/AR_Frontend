@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Layout from "../../components/Layout.js";
-import { Button, Form, FormGroup, Label, Input, Container, Col, Row } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Col, Row } from 'reactstrap';
 import { useNavigate } from 'react-router-dom';
+import { message } from 'antd';
 
 const AddCategory = () => {
 
@@ -35,10 +36,10 @@ const AddCategory = () => {
             const msg = await response.json();
 
             if (response.ok === true) {
-                window.alert(`Message: ${msg.message}`)
+                message.success(`Message: ${msg.message}`)
                 navigate('/categoryList');
             } else {
-                window.alert(`Message:${msg.message}`);
+                message.error(`Message:${msg.message}`);
             }
 
         } catch (err) {
