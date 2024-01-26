@@ -23,6 +23,7 @@ import ContentAdmin from "./pages/Admin/ContentAdmin.js";
 import ReportAdmin from "./pages/Admin/ReportAdmin.js";
 import Dashboard from './pages/Dashboard.js';
 import Setting from "./pages/Setting.js";
+import PasswordReset from './pages/PasswordReset.js';
 
 function App() {
   const { loading } = useSelector((state) => state.alerts);
@@ -49,6 +50,14 @@ function App() {
                 </PublicRoute>
               }
             />
+              <Route
+                path="/resetpassword"
+                element={
+                  <PublicRoute>
+                    <PasswordReset />
+                  </PublicRoute>
+                }
+              />
             {/* <Route
               path="/"
               element={

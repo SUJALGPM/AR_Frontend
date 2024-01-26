@@ -53,6 +53,11 @@ const Login = () => {
     }
   };
 
+  //Handle the forgot password Page...
+  const handleForgotPassword = () => {
+    navigate('/resetpassword');
+  }
+
   return (
     <>
       <div className="background_image" style={{ justifyContent: 'center', alignItems: 'center', display: 'flex' }}>
@@ -80,8 +85,9 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               required />
           </FormGroup>
-
           <Button type='primary' htmlType='submit' color="primary" size='lg' onClick={onfinishHandler} style={{ width: "200px", marginLeft: "94px" }}>Login</Button>
+          <hr style={{ borderColor: 'black' }} />
+          <h5 style={{ textAlign: 'center' }} onClick={handleForgotPassword}>Forgot Password</h5>
         </Form>
       </div>
     </>
