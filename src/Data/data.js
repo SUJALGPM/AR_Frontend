@@ -35,7 +35,7 @@ export const adminMenu = [
     icon: "fa-solid fa-cogs",
   },
   {
-    name: "Configuration",
+    name: "Setting",
     path: "/setting",
     icon: "fa-solid fa-cog",
   },

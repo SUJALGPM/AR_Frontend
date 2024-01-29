@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
         <Link to="/detailReport" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Detail Report</Link>
       </Menu.Item>
       <Menu.Item key="/doctorReport" style={{ height: "50px", border: selectedKey === '/doctorReport' ? '2px solid black' : '1px solid black', marginTop: "3px" }}>
-        <Link to="/doctorReport" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}>Doctor Report</Link>
+        <Link to="/doctorReport" style={{ color: "black", textDecoration: 'none', fontWeight: "bold", fontSize: '17px' }}> Dr Usage Report</Link>
       </Menu.Item>
     </Menu>
   );
@@ -120,7 +120,7 @@ const Layout = ({ children }) => {
           <div className="layout">
             <div className="sidebar" style={{ width: sidebarWidth }}>
               <div className="logo">
-                <h6 style={{color:"black",fontWeight:"bold"}}> ADMIN PANEL</h6>
+                <h6 style={{ color: "black", fontWeight: "bold" }}> ADMIN PANEL</h6>
                 <hr />
               </div>
               <div className="menu">
